@@ -28,9 +28,6 @@ export const saveIdea = mutation({
 
   // Mutation function implementation.
   handler: async (ctx, args) => {
-    // Insert or modify documents in the database here.
-    // Mutations can also read from the database like queries.
-    // See https://docs.convex.dev/database/writing-data.
 
     // Optionally, capture the ID of the newly created document
     const id = await ctx.db.insert("ideas", args);
@@ -39,6 +36,21 @@ export const saveIdea = mutation({
     return id;
   },
 });
+
+// Function to clear all entries in the "ideas" table
+const clearIdeasTable = async (ctx:any) => {
+  try {
+    // Delete all entries from the "ideas" table
+    await ctx.db.query("ideas").delete();
+
+    // Return success message or handle as needed
+    return "All entries in the 'ideas' table have been cleared.";
+  } catch (error) {
+    // Handle errors that may occur during the database operation
+    console.error("Error clearing ideas table:", error);
+    return "Error clearing ideas table";
+  }
+};
 
 // You can fetch data from and send data to third-party APIs via an action:
 export const fetchRandomIdea = action({
