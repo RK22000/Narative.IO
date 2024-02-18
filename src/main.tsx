@@ -1,7 +1,7 @@
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+// import App from "./App";
 import Camp from "./Camp";
 import "./index.css";
 
