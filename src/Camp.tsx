@@ -6,28 +6,35 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button'
 
 function Camp() {
-    const [storyContribution, setStoryContribution] = useState("")
+    const [storyContribution, setStoryContribution] = useState("");
+    const [sceneDescription, setSceneDescription] = useState("This is a big scene description");
 
     const shareContribution = useMutation(api.campingFunctions.shareContribution);
-    const getTheHook = useAction(api.campingFunctions.pullStoryHook)
+    const getTheHook = useAction(api.campingFunctions.pullStoryHook);
 
 
 
     return (
-        <>
-            <h1 className="text-3xl font-extrabold mt-8 text-center">
+        <div style={{height: "100%", width:"100%", overflow:"clip"}}>
+            <p className="text-3xl font-extrabold mt-8 text-center">
                 Welcome to the campfire 🔥
-            </h1>
+            </p>
 
             <div style={{display: 'flex', }}>
                 <div style={{width: "60%", position: 'relative'}}>
-                    <img src={campfire}></img>
-                    <p style={{position: "absolute", top:"50%", backgroundColor: "rgba(0,0,0,0.7)"}}>
-                        Hello there this text needs to be overlaid on the image
+                    <img src={campfire} style={{borderRadius:10}}></img>
+                    <p style={{
+                        position: "absolute", 
+                        top:"50%", transform:"translate(0%, -50%)", 
+                        // marginBottom:"60px",
+                        backgroundColor: "rgba(0,0,0,0.7)"
+                        }}>
+                        {sceneDescription}
                     </p>
                 </div>
-                <form style={{display: "flex", flexDirection:"column"}}>
-                    <Input
+                <form style={{display: "flex", flexDirection:"column", width:"40%"}}>
+                    <textarea
+                        style={{height:"100%", backgroundColor:"rgba(255,255,255,0.01)", borderRadius:10}}
                         // type="text"
                         value={storyContribution}
                         onChange={(event) => setStoryContribution(event.target.value)}
@@ -57,12 +64,14 @@ function Camp() {
 
             <Button
                 onClick={async (e) => {
-                    await getTheHook()
+                    const hook = await getTheHook()
+                    console.log("got hook", hook)
+                    setSceneDescription(hook)
                 }}
             >
                 Get the hook
             </Button>
-        </>
+        </div>
     )
 
 }
