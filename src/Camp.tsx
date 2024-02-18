@@ -11,10 +11,11 @@ function Camp() {
 
     const shareContribution = useMutation(api.campingFunctions.shareContribution);
     const getTheHook = useAction(api.campingFunctions.pullStoryHook);
-    const makeNewScene = useMutation(api.campingFunctions.makeNewScene);
+    const makeNewScene = useMutation(api.campingFunctions.saveNewScene);
     const scenes = useQuery(api.campingFunctions.getAllScene);
     const getCurrentScene = ()=>scenes?.at(-1)
     const currentContributions = useQuery(api.campingFunctions.getSceneContributions);
+    const makeNextScene = useAction(api.campingFunctions.makeNewSceneFromContributions);
 
     return (
         <div style={{height: "100%", width:"100%", overflow:"clip"}}>
@@ -84,6 +85,7 @@ function Camp() {
                 onClick={async (e) => {
                     // console.log(getCurrentScene()?._id)
                     console.log(currentContributions)
+                    makeNextScene()
                 }}
             >
                 Next Scene

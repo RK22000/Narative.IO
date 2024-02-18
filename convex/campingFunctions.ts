@@ -1,7 +1,7 @@
 import { v } from "convex/values";
 import { query, mutation, action } from "./_generated/server";
 import { api } from "./_generated/api";
-import { getHook, getImage } from "./LLMcalls";
+import { getHook, getImage, makeNextScene } from "./LLMcalls";
 
 export const shareContribution = mutation({
     args: {
@@ -25,7 +25,7 @@ export const pullStoryHook = action({
     }
 })
 
-export const makeNewScene = mutation({
+export const saveNewScene = mutation({
     args: {
         scene: v.string()
     },
@@ -42,11 +42,28 @@ export const getAllScene = query({
     }
 })
 
+export const getCurrentScene = query({
+    args: {},
+    handler: async (ctx, args) => {
+        return (await ctx.db.query("scenes").collect())?.at(-1)
+    }
+})
+
 export const getSceneContributions = query({
     args: {},
     handler: async (ctx, args) => {
         const allContributions = await ctx.db.query("contributions").collect()
         const currentScene = (await ctx.db.query("scenes").collect()).at(-1)
         return allContributions.filter(c => c.scene_id === currentScene._id).map(c => c.contribution)
+    }
+})
+
+export const makeNewSceneFromContributions = action({
+    args: {},
+    handler: async (ctx) => {
+        const currentScene = (await ctx.runQuery(api.campingFunctions.getCurrentScene)).scene
+        const contributions = await ctx.runQuery(api.campingFunctions.getSceneContributions)
+        const newScene = await makeNextScene(currentScene, contributions)
+        await ctx.runMutation(api.campingFunctions.saveNewScene, {scene: newScene})
     }
 })
