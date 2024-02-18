@@ -7,10 +7,12 @@ import { Button } from '@/components/ui/button'
 
 function Camp() {
     const [storyContribution, setStoryContribution] = useState("")
+    const [currentScene_id, setScene_id] = useState("")
 
     const shareContribution = useMutation(api.campingFunctions.shareContribution);
-
-
+    const flushContributions = useMutation(api.campingFunctions.flushContributions);
+    const getConcatenatedScenes = useQuery(api.campingFunctions.getConcatenatedScenes);
+    const makeNewScene = useMutation(api.campingFunctions.makeNewScene);
 
     return (
         <>
@@ -35,12 +37,24 @@ function Camp() {
                     }
                     onClick={async (e) => {
                         e.preventDefault();
-                        await shareContribution({ contribution: storyContribution.trim(), })
+                        await shareContribution({ contribution: storyContribution.trim(), scene_id: currentScene_id,})
                         setStoryContribution("")
                     }}
                     >
                         Share your story
                     </Button>
+            </form>
+            <form>
+                <Button
+                    onClick={async (e) => {
+                        e.preventDefault();
+                        const text = "placeholder";
+                        const sceneId = await makeNewScene({ scene: text, });
+                        setScene_id(sceneId)
+                    }}
+                    >
+                        Write next scene
+                </Button>
             </form>
         </>
     )

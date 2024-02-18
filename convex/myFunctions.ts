@@ -40,6 +40,7 @@ export const saveIdea = mutation({
 export const saveContribution = mutation({
   args: {
     contribution: v.string(),
+    scene_id: v.string(),
   },
   handler: async (ctx, args) => {
     const id = await ctx.db.insert("contributions", args);

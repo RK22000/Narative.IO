@@ -23,9 +23,13 @@ export default defineSchema(
     }),
     contributions: defineTable({
       contribution: v.string(), 
+      scene_id: v.string(), 
     }),
     storysofar: defineTable({
       story: v.string(),
+    }),
+    scenes: defineTable({
+      scene: v.string(),
     }),
 
     
