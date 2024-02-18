@@ -1,3 +1,5 @@
+import { useAction, useMutation, useQuery } from 'convex/react'
+import { api } from '../convex/_generated/api'
 import campfire from './assets/summer-campfire.jpg'
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
@@ -5,6 +7,10 @@ import { Button } from '@/components/ui/button'
 
 function Camp() {
     const [storyContribution, setStoryContribution] = useState("")
+
+    const shareContribution = useMutation(api.campingFunctions.shareContribution);
+
+
 
     return (
         <>
@@ -29,6 +35,7 @@ function Camp() {
                     }
                     onClick={async (e) => {
                         e.preventDefault();
+                        await shareContribution({ contribution: storyContribution.trim(), })
                         setStoryContribution("")
                     }}
                     >
