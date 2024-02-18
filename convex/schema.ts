@@ -17,6 +17,11 @@ export default defineSchema(
     numbers: defineTable({
       value: v.number(),
     }),
+    ideas: defineTable({
+      random: v.boolean(),
+      idea: v.string(),
+    })
+    
   },
   // If you ever get an error about schema mismatch
   // between your data and your schema, and you cannot

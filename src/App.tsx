@@ -14,11 +14,13 @@ function App() {
   const saveIdea = useMutation(api.myFunctions.saveIdea);
   const generateIdea = useAction(api.myFunctions.fetchRandomIdea);
 
+  const deleteAllIdeas = useAction(api.myFunctions.clearIdeasTable);
+
   return (
     <>
       <main className="container max-w-2xl flex flex-col gap-8">
         <h1 className="text-3xl font-extrabold mt-8 text-center">
-          Get hacking with Convex
+          HELLO GUYS
         </h1>
 
         <h2 className="text-center">Let's brainstorm apps to build!</h2>
