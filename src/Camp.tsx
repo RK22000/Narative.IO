@@ -10,9 +10,12 @@ function Camp() {
     const [currentScene_id, setScene_id] = useState("")
 
     const shareContribution = useMutation(api.campingFunctions.shareContribution);
-    const flushContributions = useMutation(api.campingFunctions.flushContributions);
-    const getConcatenatedScenes = useQuery(api.campingFunctions.getConcatenatedScenes);
+    // const getConcatenatedScenes = useQuery(api.campingFunctions.getConcatenatedScenes);
     const makeNewScene = useMutation(api.campingFunctions.makeNewScene);
+    
+    // const currentContributions = useQuery(api.campingFunctions.getContributions);
+    // const { data: currentContributions } = useQuery(api.campingFunctions.getContributions, { currentScene_id: currentScene_id });
+    // const listContributions = useQuery(api.campingFunctions.listContributions);
 
     return (
         <>
@@ -48,14 +51,32 @@ function Camp() {
                 <Button
                     onClick={async (e) => {
                         e.preventDefault();
-                        const text = "placeholder";
-                        const sceneId = await makeNewScene({ scene: text, });
+                        const text = "placeholder five";
+                        const currentContributions = await ctx.db
+                            .query("contributions")
+                            .filter((q) => q.eq(q.field("scene_id"), currentScene_id))
+                            .collect();
+                        const result = currentContributions.map(a => a.contribution);
+                        const str = result.toString();
+                        const sceneId = await makeNewScene({ scene: str, });
+
+                        // const currentContributions = await ctx.db
+                        //     .query("contributions")
+                        //     .filter((q) => q.eq(q.field("scene_id"), currentScene_id))
+                        //     .collect();
+
                         setScene_id(sceneId)
                     }}
                     >
                         Write next scene
                 </Button>
             </form>
+
+            <p>
+                currentContributions
+            </p>
+
+            
         </>
     )
 

@@ -89,6 +89,32 @@ export const shareContribution = mutation({
     }
   });
 
+  // You can read data from the database via a query function:
+export const listContributions = query({
+    // Validators for arguments.
+    args: {},
+  
+    // Query function implementation.
+    handler: async (ctx, args) => {
+      // Read the database as many times as you need here.
+      // See https://docs.convex.dev/database/reading-data.
+      return await ctx.db.query("contributions").collect();
+    },
+  });
+
+//   export const getContributions = query({
+//     args: { 
+//         currentScene_id: v.string() 
+//     }, 
+//     handler: async (ctx, args) => {
+//         const currentContributions = await ctx.db
+//                     .query("contributions")
+//                     .filter((q) => q.eq(q.field("scene_id"), "banana"))
+//                     .collect();
+//         return currentContributions;
+//     }
+//   })
+
 //   export const getScene = query({
 //     args: {},
 //     handler: async (ctx) => {
