@@ -1,6 +1,6 @@
 # Narrative.ai
 
-![Narrativeai](/Narrativeai.png)
+![Narrativeai](Narrativeai.png)
 
 ## Inspiration
 
