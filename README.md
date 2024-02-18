@@ -1,5 +1,7 @@
 # Narrative.ai
 
+[Narrativeai](/Narrativeai.png)
+
 ## Inspiration
 
 Struck by the affective power of 2000s-era visual novels (ノベルゲーム), forged at the now-global intersection between the abject alienation at the heart of the individual subject and the novel totality of closely-knit social relations that constitute the subject as such—hence, moe—we set out to build a new take—but with a taste of the familiar—on the formal unity of the visual novel genre. Eliezer Yudkowsky remarks somewhere that ours is, so to speak, the world-historic era of AI-alignment. For him, one divides into two: a road diverges into an either/or, between our self-destruction and descent into the dystopia of Roko and Ginsberg's terrible Moloch or the messianic reclamation of ourselves. We cannot disavow the creative destruction of the unspeakable void that reproduces us but instead must—together—work through the malaise of alienation as such. This collective VN project comes as a kind of a preliminary answer to this animating problematic of our time.
