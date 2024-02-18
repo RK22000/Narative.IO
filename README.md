@@ -26,6 +26,8 @@ We are proud of having ironed out a working project, built from previously unfam
 ## What we learned
 
 We learned the basics of Convex and how to use it for backend development.
+We learned how to use Together.ai's LLM models and how to integrate it into a full-stack web development project.
+
 
 ## What's next for Narrative.ai
 
@@ -34,4 +36,3 @@ We hope to add more new features to the visual storytelling aspect of Narrative.
 
 ### Credits
 - convex-hacks-pack repo for starting off our hack
-We learned how to use Together.ai's LLM models and how to integrate it into a full-stack web development project.
