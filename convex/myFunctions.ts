@@ -63,6 +63,20 @@ const clearContributionsTable = async (ctx: any) => {
   }
 };
 
+const clearStorysofarTable = async (ctx: any) => {
+  try {
+    // Delete all entries from the "contributions" table
+    await ctx.db.query("storysofar").delete();
+
+    // Return success message or handle as needed
+    return "All entries in the 'storysofar' table have been cleared.";
+  } catch (error) {
+    // Handle errors that may occur during the database operation
+    console.error("Error clearing storysofar table:", error);
+    return "Error clearing storysofar table";
+  }
+};
+
 // You can fetch data from and send data to third-party APIs via an action:
 export const fetchRandomIdea = action({
   // Validators for arguments.
