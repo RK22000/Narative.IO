@@ -12,6 +12,9 @@ function Camp() {
     const shareContribution = useMutation(api.campingFunctions.shareContribution);
     const getTheHook = useAction(api.campingFunctions.pullStoryHook);
     const makeNewScene = useMutation(api.campingFunctions.makeNewScene);
+    const scenes = useQuery(api.campingFunctions.getAllScene);
+    const getCurrentScene = ()=>scenes?.at(-1)
+    const currentContributions = useQuery(api.campingFunctions.getSceneContributions);
 
     return (
         <div style={{height: "100%", width:"100%", overflow:"clip"}}>
@@ -28,7 +31,8 @@ function Camp() {
                         // marginBottom:"60px",
                         backgroundColor: "rgba(0,0,0,0.7)"
                         }}>
-                        {sceneDescription}
+                        {getCurrentScene()?.scene}
+                        
                     </p>
                 </div>
                 <form style={{display: "flex", flexDirection:"column", width:"40%"}}>
@@ -49,7 +53,10 @@ function Camp() {
                         }
                         onClick={async (e) => {
                             e.preventDefault();
-                            await shareContribution({ contribution: storyContribution.trim(), })
+                            if (scenes?.length === 0) {
+                                await makeNewScene({scene: ""})
+                            }
+                            await shareContribution({ contribution: storyContribution.trim(), scene_id: getCurrentScene()?._id})
                             setStoryContribution("")
                         }}
                         >
@@ -65,13 +72,25 @@ function Camp() {
                 onClick={async (e) => {
                     const hook = await getTheHook()
                     console.log("got hook", hook)
-                    setSceneDescription(hook)
+                    setSceneDescription(hook)  // Maybe comment this out
                     await makeNewScene({scene: hook})
 
                 }}
             >
                 Get the hook
             </Button>
+            <Button
+                style={{position:"relative", left:"70%", transform:"translate(-0%, 0%)"}}
+                onClick={async (e) => {
+                    // console.log(getCurrentScene()?._id)
+                    console.log(currentContributions)
+                }}
+            >
+                Next Scene
+            </Button>
+
+
+
         </div>
     )
 

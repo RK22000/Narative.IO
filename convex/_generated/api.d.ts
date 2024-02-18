@@ -14,10 +14,11 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as LLMcalls from "../LLMcalls.js";
-import type * as _schema from "../_schema.js";
+import type * as API_KEY from "../API_KEY.js";
 import type * as campingFunctions from "../campingFunctions.js";
+import type * as LLMcalls from "../LLMcalls.js";
 import type * as myFunctions from "../myFunctions.js";
+import type * as _schema from "../_schema.js";
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -28,10 +29,11 @@ import type * as myFunctions from "../myFunctions.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  LLMcalls: typeof LLMcalls;
-  _schema: typeof _schema;
+  API_KEY: typeof API_KEY;
   campingFunctions: typeof campingFunctions;
+  LLMcalls: typeof LLMcalls;
   myFunctions: typeof myFunctions;
+  _schema: typeof _schema;
 }>;
 export declare const api: FilterApi<
   typeof fullApi,
