@@ -14,7 +14,7 @@ function App() {
   const saveIdea = useMutation(api.myFunctions.saveIdea);
   const generateIdea = useAction(api.myFunctions.fetchRandomIdea);
 
-  const deleteAllIdeas = useAction(api.myFunctions.clearIdeasTable);
+  const deleteAllContributions = useAction(api.myFunctions.clearContributionsTable);
 
   return (
     <>
@@ -56,9 +56,9 @@ function App() {
             onClick={async () => {
               await generateIdea();
             }}
-            title="Save a randomly generated app idea to the database"
+            title="hello"
           >
-            Generate a random app idea
+            asdjhkdshdsakhdsak
           </Button>
 
           <div

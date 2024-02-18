@@ -37,18 +37,29 @@ export const saveIdea = mutation({
   },
 });
 
-// Function to clear all entries in the "ideas" table
-const clearIdeasTable = async (ctx:any) => {
+export const saveContribution = mutation({
+  args: {
+    contribution: v.string(),
+  },
+  handler: async (ctx, args) => {
+    const id = await ctx.db.insert("contributions", args);
+    return id;
+  },
+});
+  
+
+// Function to clear all entries in the "contributions" table
+const clearContributionsTable = async (ctx: any) => {
   try {
-    // Delete all entries from the "ideas" table
-    await ctx.db.query("ideas").delete();
+    // Delete all entries from the "contributions" table
+    await ctx.db.query("contributions").delete();
 
     // Return success message or handle as needed
-    return "All entries in the 'ideas' table have been cleared.";
+    return "All entries in the 'contributions' table have been cleared.";
   } catch (error) {
     // Handle errors that may occur during the database operation
-    console.error("Error clearing ideas table:", error);
-    return "Error clearing ideas table";
+    console.error("Error clearing contributions table:", error);
+    return "Error clearing contributions table";
   }
 };
 

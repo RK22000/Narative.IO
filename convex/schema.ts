@@ -20,7 +20,14 @@ export default defineSchema(
     ideas: defineTable({
       random: v.boolean(),
       idea: v.string(),
-    })
+    }),
+    contributions: defineTable({
+      contribution: v.string(), 
+    }),
+    storysofar: defineTable({
+      story: v.string(),
+    }),
+
     
   },
   // If you ever get an error about schema mismatch
