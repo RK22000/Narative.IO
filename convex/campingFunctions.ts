@@ -23,3 +23,13 @@ export const pullStoryHook = action({
         return hook;
     }
 })
+
+export const makeNewScene = mutation({
+    args: {
+        scene: v.string()
+    },
+    handler: async (ctx, args) => {
+        const id = await ctx.db.insert("scenes", args)
+        return id
+    },
+});

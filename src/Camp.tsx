@@ -11,8 +11,7 @@ function Camp() {
 
     const shareContribution = useMutation(api.campingFunctions.shareContribution);
     const getTheHook = useAction(api.campingFunctions.pullStoryHook);
-
-
+    const makeNewScene = useMutation(api.campingFunctions.makeNewScene);
 
     return (
         <div style={{height: "100%", width:"100%", overflow:"clip"}}>
@@ -67,6 +66,8 @@ function Camp() {
                     const hook = await getTheHook()
                     console.log("got hook", hook)
                     setSceneDescription(hook)
+                    await makeNewScene({scene: hook})
+
                 }}
             >
                 Get the hook
