@@ -27,9 +27,11 @@ We are proud of having ironed out a working project, built from previously unfam
 
 We learned the basics of Convex and how to use it for backend development.
 
-### Credits
-- convex-hacks-pack repo for starting off our hack
-We learned how to use Together.ai's LLM models and how to integrate it into a full-stack web development project.
 ## What's next for Narrative.ai
 
 We hope to add more new features to the visual storytelling aspect of Narrative.ai, as well as introducing new ludic features such as a system of competition—such as points-keeping, based on uniqueness of prompt.
+
+
+### Credits
+- convex-hacks-pack repo for starting off our hack
+We learned how to use Together.ai's LLM models and how to integrate it into a full-stack web development project.
