@@ -1,5 +1,4 @@
 import { count } from 'console';
-import { apiKey } from './API_KEY'
 const url = 'https://api.together.xyz/v1/chat/completions';
 
 export const getHook = ()=>{
@@ -11,7 +10,8 @@ export const askLLM = (prompt: string)=>{
 
     const headers = new Headers({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        // 'Authorization': `Bearer ${apiKey}`
+        'Authorization': `Bearer ${process.env.TOGETHER_API_KEY}`
     })
 
     const data = {
@@ -51,12 +51,12 @@ export const makeNextScene = (currentScene: string, contributions: string[])=>{
     Here is a scene in a story 
 
     \`\`\`
-    ${currentScene}
+    ${currentScene}...
     \`\`\`
 
     Here are some ways this story might be continued
 
-    * ${contributions.join("\n  * ")}
+    ${contributions.map(c => `*- ${c}`).join("\n")}
 
     You are a story teller and you must pick and choose from these ideas to continue the narrative of the story.
 
@@ -70,7 +70,7 @@ export const makeNextScene = (currentScene: string, contributions: string[])=>{
 export const getImage = (hook: String)=>{
     const headers = new Headers({
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
+        'Authorization': `Bearer ${process.env.TOGETHER_KEY}`
     })
 
     const data = {

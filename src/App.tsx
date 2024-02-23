@@ -14,7 +14,7 @@ function App() {
   const saveIdea = useMutation(api.myFunctions.saveIdea);
   const generateIdea = useAction(api.myFunctions.fetchRandomIdea);
 
-  const deleteAllIdeas = useAction(api.myFunctions.clearIdeasTable);
+  // const deleteAllIdeas = useAction(api.myFunctions.clearIdeasTable);
 
   return (
     <>

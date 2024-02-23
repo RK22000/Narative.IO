@@ -14,7 +14,6 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
-import type * as API_KEY from "../API_KEY.js";
 import type * as campingFunctions from "../campingFunctions.js";
 import type * as LLMcalls from "../LLMcalls.js";
 import type * as myFunctions from "../myFunctions.js";
@@ -29,7 +28,6 @@ import type * as _schema from "../_schema.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  API_KEY: typeof API_KEY;
   campingFunctions: typeof campingFunctions;
   LLMcalls: typeof LLMcalls;
   myFunctions: typeof myFunctions;
