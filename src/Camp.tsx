@@ -2,12 +2,12 @@ import { useAction, useMutation, useQuery } from 'convex/react'
 import { api } from '../convex/_generated/api'
 import campfire from './assets/summer-campfire.jpg'
 import { useState } from 'react';
-import { Input } from '@/components/ui/input';
+// import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button'
 
 function Camp() {
     const [storyContribution, setStoryContribution] = useState("");
-    const [sceneDescription, setSceneDescription] = useState("This is a big scene description");
+    // const [sceneDescription, setSceneDescription] = useState("This is a big scene description");
 
     const shareContribution = useMutation(api.campingFunctions.shareContribution);
     const getTheHook = useAction(api.campingFunctions.pullStoryHook);
@@ -70,10 +70,10 @@ function Camp() {
 
 
             <Button
-                onClick={async (e) => {
+                onClick={async () => {
                     const hook = await getTheHook()
                     console.log("got hook", hook)
-                    setSceneDescription(hook)  // Maybe comment this out
+                    // setSceneDescription(hook)  // Maybe comment this out
                     await makeNewScene({scene: hook})
 
                 }}
@@ -82,7 +82,7 @@ function Camp() {
             </Button>
             <Button
                 style={{position:"relative", left:"70%", transform:"translate(-0%, 0%)"}}
-                onClick={async (e) => {
+                onClick={async () => {
                     // console.log(getCurrentScene()?._id)
                     console.log(currentContributions)
                     makeNextScene()

@@ -1,4 +1,3 @@
-import { count } from 'console';
 const url = 'https://api.together.xyz/v1/chat/completions';
 
 export const getHook = ()=>{
@@ -67,30 +66,30 @@ export const makeNextScene = (currentScene: string, contributions: string[])=>{
     return result
 }
 
-export const getImage = (hook: String)=>{
-    const headers = new Headers({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.TOGETHER_KEY}`
-    })
+// export const getImage = (hook: String)=>{
+//     const headers = new Headers({
+//         'Content-Type': 'application/json',
+//         'Authorization': `Bearer ${process.env.TOGETHER_KEY}`
+//     })
 
-    const data = {
-        model: 'prompthero/openjourney',
-        // max_tokens: 128,
-        prompt: hook,
-        temperature: 0.7,
-    };
+//     const data = {
+//         model: 'prompthero/openjourney',
+//         // max_tokens: 128,
+//         prompt: hook,
+//         temperature: 0.7,
+//     };
 
-    const options = {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(data)
-    };
+//     const options = {
+//         method: 'POST',
+//         headers,
+//         body: JSON.stringify(data)
+//     };
 
-    const result =  fetch(url, options)
-                .then(response => response.json())
-                .catch(error => console.log("Error in fetching hook: ", error))
-    // const storyHook = result
-    //             .then(r => r['choices'][0]['text'])
-    //             .catch(error => console.log("Error in parsing result json: ", error))
-    return result
-}
+//     const result =  fetch(url, options)
+//                 .then(response => response.json())
+//                 .catch(error => console.log("Error in fetching hook: ", error))
+//     // const storyHook = result
+//     //             .then(r => r['choices'][0]['text'])
+//     //             .catch(error => console.log("Error in parsing result json: ", error))
+//     return result
+// }

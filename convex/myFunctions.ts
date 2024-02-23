@@ -11,7 +11,7 @@ export const listIdeas = query({
   args: {},
 
   // Query function implementation.
-  handler: async (ctx, args) => {
+  handler: async (ctx) => {
     // Read the database as many times as you need here.
     // See https://docs.convex.dev/database/reading-data.
     return await ctx.db.query("ideas").collect();
@@ -37,20 +37,20 @@ export const saveIdea = mutation({
   },
 });
 
-// Function to clear all entries in the "ideas" table
-const clearIdeasTable = async (ctx:any) => {
-  try {
-    // Delete all entries from the "ideas" table
-    await ctx.db.query("ideas").delete();
+// // Function to clear all entries in the "ideas" table
+// const clearIdeasTable = async (ctx:any) => {
+//   try {
+//     // Delete all entries from the "ideas" table
+//     await ctx.db.query("ideas").delete();
 
-    // Return success message or handle as needed
-    return "All entries in the 'ideas' table have been cleared.";
-  } catch (error) {
-    // Handle errors that may occur during the database operation
-    console.error("Error clearing ideas table:", error);
-    return "Error clearing ideas table";
-  }
-};
+//     // Return success message or handle as needed
+//     return "All entries in the 'ideas' table have been cleared.";
+//   } catch (error) {
+//     // Handle errors that may occur during the database operation
+//     console.error("Error clearing ideas table:", error);
+//     return "Error clearing ideas table";
+//   }
+// };
 
 // You can fetch data from and send data to third-party APIs via an action:
 export const fetchRandomIdea = action({

@@ -1,7 +1,7 @@
 import { v } from "convex/values";
 import { query, mutation, action } from "./_generated/server";
 import { api } from "./_generated/api";
-import { getHook, getImage, makeNextScene } from "./LLMcalls";
+import { getHook, makeNextScene } from "./LLMcalls";
 
 export const shareContribution = mutation({
     args: {
@@ -16,7 +16,7 @@ export const shareContribution = mutation({
 
 export const pullStoryHook = action({
     args: {},
-    handler: async (ctx, args) => {
+    handler: async () => {
         const hook = await getHook()
         console.log("Got Campfire hook: ", hook)
         // const pic_res = await getImage(hook)
@@ -37,21 +37,21 @@ export const saveNewScene = mutation({
 
 export const getAllScene = query({
     args: {},
-    handler: async (ctx, args) => {
+    handler: async (ctx) => {
         return await ctx.db.query("scenes").collect()
     }
 })
 
 export const getCurrentScene = query({
     args: {},
-    handler: async (ctx, args) => {
+    handler: async (ctx) => {
         return (await ctx.db.query("scenes").collect())?.at(-1)
     }
 })
 
 export const getSceneContributions = query({
     args: {},
-    handler: async (ctx, args) => {
+    handler: async (ctx) => {
         const allContributions = await ctx.db.query("contributions").collect()
         const currentScene = (await ctx.db.query("scenes").collect()).at(-1)
         return allContributions.filter(c => c.scene_id === currentScene._id).map(c => c.contribution)
