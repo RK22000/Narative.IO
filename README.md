@@ -17,10 +17,11 @@ Narrative.ai is powered by Convex, Together.ai, and React.
 
 ## Challenges we ran into
 
-We worked with new and unfamiliar languages, APIs, and frameworks—all an opportunity to learn and gain practical experience from tinkering, as well as mentorship from sponsors and organizers.
+- We worked with new and unfamiliar languages, APIs, and frameworks—all an opportunity to learn and gain practical experience from tinkering, as well as mentorship from sponsors and organizers.
 One of our teammates fell ill and dropped out! We shrank from three to a duo, and were forced towards a regime of relative austerity on our productive capacity. We worked through three separate ideas, until settling on the visual novel form not too long from the deadline!
-Sleep deprivation.
-Accomplishments that we're proud of
+- Sleep deprivation.
+
+## Accomplishments that we're proud of
 
 We are proud of having ironed out a working project, built from previously unfamiliar components, that is delightful to play with. We understand that old adage, that there is no royal road to science...
 
